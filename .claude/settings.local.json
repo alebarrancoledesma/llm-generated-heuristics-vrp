@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(wc:*)",
-      "Bash(python3 -m py_compile /home/blaas/work/projects/llm-related-projects/llm-generated-heuristics/llm-heuristics.py)",
-      "Bash(python3:*)"
-    ]
-  }
-}
