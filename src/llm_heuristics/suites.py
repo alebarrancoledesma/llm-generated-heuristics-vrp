@@ -23,7 +23,7 @@ SUITES = {
         f"{IPC_2023}/blocksworld/example-static.out",
     ),
     "childsnack": DomainSuite(
-        "childsnacks",
+        "childsnack",
         f"{IPC_2023}/childsnack/domain.pddl",
         f"{IPC_2023}/childsnack/p01.pddl",
         f"{IPC_2023}/childsnack/p99.pddl",
