@@ -2,10 +2,11 @@
 
 import click
 import logging
+import re
 import subprocess
 import sys
 
-from src.llm_heuristics.models import *
+from src.llm_heuristics import models
 from src.llm_heuristics.suites import SUITES
 from src.llm_heuristics.prompt import create_end_to_end_prompt
 
@@ -116,13 +117,13 @@ def main(domain, instance, model, framework, plan_file, temperature, top_p):
     logging.info(f"Using model {model} with framework {framework}.")
 
     if framework == "gemini":
-        answer = run_gemini(model, prompt, temperature, top_p)
+        answer = models.run_gemini(model, prompt, temperature, top_p)
     elif framework == "deepseek":
-        answer = run_deepseek(model, prompt, temperature, top_p)
+        answer = models.run_deepseek(model, prompt, temperature, top_p)
     elif framework == "nvidia":
-        answer = run_nvidia(model, prompt, temperature, top_p)
+        answer = models.run_nvidia(model, prompt, temperature, top_p)
     elif framework == "openai":
-        answer = run_openai(model, prompt, temperature, top_p)
+        answer = models.run_openai(model, prompt, temperature, top_p)
 
     logging.info("LLM Answer:")
     print(answer)
