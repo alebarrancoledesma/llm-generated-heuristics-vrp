@@ -94,6 +94,14 @@ All options:
 
 The `benchmarks/` directory contains domains from the Learning Track of the [IPC 2023](https://ipc2023-learning.github.io/) benchmark, split into training and testing sets.
 
+# Model Availability Note
+
+Some of the original models used in the paper are now deprecated or no longer available through their APIs. This repository therefore keeps a curated set of currently available models in `src/llm_heuristics/models.py`.
+
+For up-to-date results with newer models, see our leaderboard:
+
+- https://abcorrea.github.io/leaderboard/
+
 # Extending the Project
 
 ## Adding a New Domain
@@ -163,7 +171,7 @@ The model is then selectable via `--model gemini-3-ultra`.
 
 # Citing this Project
 
-You can cite this project by citing the NeurIPS paper directly:
+If you use this codebase, please cite the original NeurIPS 2025 paper:
 
 ```tex
 @InProceedings{correa-et-al-neurips2025,
@@ -174,3 +182,7 @@ You can cite this project by citing the NeurIPS paper directly:
   year =         "2025"
 }
 ```
+
+You can also find the original source code used in the paper on Zenodo: https://doi.org/10.5281/zenodo.17400964
+
+A citation file (for both the NeurIPS paper and the Zenodo entry) is provided as `CITATION.cff`.

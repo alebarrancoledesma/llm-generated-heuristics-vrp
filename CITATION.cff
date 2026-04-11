@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the Zenodo record and the NeurIPS paper."
+title: "LLM-Generated Heuristics"
+type: software
+version: 0.1.0
+doi: 10.5281/zenodo.17400964
+license: GPL-3.0-or-later
+authors:
+  - family-names: Corrêa
+    given-names: Augusto B.
+  - family-names: Pereira
+    given-names: André Grahl
+  - family-names: Seipp
+    given-names: Jendrik
+preferred-citation:
+  type: conference-paper
+  authors:
+    - family-names: Corrêa
+      given-names: Augusto B.
+    - family-names: Pereira
+      given-names: André G.
+    - family-names: Seipp
+      given-names: Jendrik
+  title: "Classical Planning with LLM-Generated Heuristics: Challenging the State of the Art with Python Code"
+  year: 2025
+  booktitle: "Proceedings of the Thirty-Ninth Annual Conference on Neural Information Processing Systems (NeurIPS 2025)"
