@@ -37,7 +37,7 @@ All options:
 |--------|-------------|---------|
 | `--domain` | Domain to generate a heuristic for (required) | — |
 | `--framework` | LLM API to use: `gemini`, `deepseek`, `nvidia`, `openai` | `gemini` |
-| `--model` | Model name (must be supported by the chosen framework) | `gemini-2.0-flash-thinking` |
+| `--model` | Model name (must be supported by the chosen framework) | `gemini-2.5-flash` |
 | `--heuristic-name` | Class name of the generated heuristic; must end with `Heuristic` | `NewDomainDependentHeuristic` |
 | `--heuristic-file` | Output file for the generated heuristic; must end with `.py` | `new-heuristic.py` |
 | `--temperature` | Sampling temperature | `1.0` |
@@ -85,7 +85,7 @@ All options:
 | `--domain` | Domain of the instance (required) | — |
 | `--instance` | Path to the PDDL instance file (required) | — |
 | `--framework` | LLM API to use: `gemini`, `deepseek`, `nvidia`, `openai` | `gemini` |
-| `--model` | Model name (must be supported by the chosen framework) | `gemini-2.0-flash-thinking` |
+| `--model` | Model name (must be supported by the chosen framework) | `gemini-2.5-flash` |
 | `--plan-file` | Output file for the generated plan | `plan` |
 | `--temperature` | Sampling temperature | `0.1` |
 | `--top-p` | Top-p sampling parameter | `0.5` |

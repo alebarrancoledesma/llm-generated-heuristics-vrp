@@ -57,7 +57,7 @@ def validate_top_p(ctx, param, value):
 @click.option(
     "--model",
     "-m",
-    default="gemini-2.0-flash-thinking",
+    default="gemini-2.5-flash",
     help="LLM Model used.",
 )
 @click.option(
