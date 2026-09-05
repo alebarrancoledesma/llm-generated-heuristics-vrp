@@ -108,13 +108,19 @@ def validate_top_p(ctx, param, value):
     default="",
     help="Idea for heuristic generation.",
 )
-def main(domain, model, framework, heuristic_name, heuristic_file, prompt_format, temperature, top_p, idea, ablation):
+@click.option(
+    "--thinking/--no-thinking",
+    default=False,
+    help="DeepSeek thinking mode. Default off: thinking ate the 65k output cap.",
+)
+def main(domain, model, framework, heuristic_name, heuristic_file, prompt_format, temperature, top_p, idea, ablation, thinking):
     logging.info(f"Python version: {sys.version}.")
     logging.info(f"Using suite {domain}.")
     suite = SUITES[domain]
     logging.info(f"Using model {model}.")
     logging.info(f"Using temperature {temperature}.")
     logging.info(f"Using top-P {top_p}.")
+    logging.info(f"Using thinking {thinking}.")
     logging.info(f"Using ablation option {ablation}")
     logging.info(f"Generating prompt with format {prompt_format}")
     prompt = create_prompt(suite, heuristic_name, prompt_format, ablation)
@@ -127,7 +133,7 @@ def main(domain, model, framework, heuristic_name, heuristic_file, prompt_format
     if framework == "gemini":
         answer = models.run_gemini(model, prompt, temperature, top_p)
     elif framework == "deepseek":
-        answer = models.run_deepseek(model, prompt, temperature, top_p)
+        answer = models.run_deepseek(model, prompt, temperature, top_p, thinking=thinking)
     elif framework == "nvidia":
         answer = models.run_nvidia(model, prompt, temperature, top_p)
     elif framework == "openai":

@@ -1,10 +1,41 @@
 import logging
 import os
 import re
+from pathlib import Path
 
 from google import genai
 from google.genai import types
 from openai import OpenAI
+
+
+def _get_api_key(name: str) -> str:
+    """Read an API key from the environment, or from a local `.env` if unset.
+
+    `uv run` does not load `.env` unless you pass `--env-file .env`.
+    """
+    value = os.getenv(name)
+    if value:
+        return value
+    candidates = [
+        Path.cwd() / ".env",
+        Path(__file__).resolve().parents[2] / ".env",
+    ]
+    for path in candidates:
+        if not path.is_file():
+            continue
+        for line in path.read_text(encoding="utf-8-sig").splitlines():
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, raw = line.split("=", 1)
+            if key.strip() == name:
+                value = raw.strip().strip('"').strip("'")
+                if value:
+                    return value
+    raise RuntimeError(
+        f"{name} is not set. Put it in `.env` in the repo root "
+        f"or pass `uv run --env-file .env ...`."
+    )
 
 
 GEMINI_MODELS = {
@@ -104,19 +135,23 @@ def run_gemini(model_name, prompt, temperature, top_p):
     return answer
 
 
-def run_deepseek(model_name, prompt, temperature, top_p):
-    api_key = os.getenv("DEEPSEEK_API_KEY")
+def run_deepseek(model_name, prompt, temperature, top_p, thinking=False):
+    api_key = _get_api_key("DEEPSEEK_API_KEY")
     client = OpenAI(
         base_url="https://api.deepseek.com",
         api_key=api_key,
     )
+
+    thinking_type = "enabled" if thinking else "disabled"
+    logging.info(f"DeepSeek thinking: {thinking_type}")
 
     completion = client.chat.completions.create(
         model=get_model_id(model_name, DEEPSEEK_MODELS),
         messages=[{"role": "user", "content": prompt}],
         temperature=temperature,
         top_p=top_p,
-        stream=False
+        stream=False,
+        extra_body={"thinking": {"type": thinking_type}},
     )
 
     logging.info("LLM Usage:")
