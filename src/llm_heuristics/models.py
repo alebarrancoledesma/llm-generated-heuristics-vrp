@@ -27,8 +27,11 @@ OPENAI_MODELS = {
 }
 
 DEEPSEEK_MODELS = {
-    "deepseek-r1" : "deepseek-reasoner",
-    "deepseek-v3" : "deepseek-chat",
+    "deepseek-v4-flash": "deepseek-v4-flash",
+    "deepseek-v4-pro": "deepseek-v4-pro",
+    # Retired 2026-07-24; left so old CLI names still resolve.
+    "deepseek-r1": "deepseek-reasoner",
+    "deepseek-v3": "deepseek-chat",
 }
 
 NVIDIA_MODELS = {
