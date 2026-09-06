@@ -2,6 +2,7 @@ from dataclasses import dataclass
 
 BENCHMARKS = "benchmarks/"
 IPC_2023 = "/".join([BENCHMARKS, "ipc2023-learning", "training"])
+CVRP_STRIPS = "/".join([BENCHMARKS, "cvrp-strips", "training"])
 
 @dataclass
 class DomainSuite:
@@ -77,5 +78,13 @@ SUITES = {
         f"{IPC_2023}/transport/p99.pddl",
         f"{IPC_2023}/transport/example-state.out",
         f"{IPC_2023}/transport/example-static.out",
+    ),
+    "cvrp-strips": DomainSuite(
+        "cvrp-strips",
+        f"{CVRP_STRIPS}/domain.pddl",
+        f"{CVRP_STRIPS}/p01-open.pddl",
+        f"{CVRP_STRIPS}/p99-open.pddl",
+        f"{CVRP_STRIPS}/example-state.out",
+        f"{CVRP_STRIPS}/example-static.out",
     ),
 }
